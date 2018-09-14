@@ -9,9 +9,9 @@ def hello():
 
 
 @app.route("/🤢")
-def ggg():
+def map_foo():
     return "🦖"
-    
+
 @app.route("/fake")
 def fake():
     return request.args.get('news', '')
