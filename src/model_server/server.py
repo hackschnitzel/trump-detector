@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import request
+import random
 app = Flask(__name__)
 
 
@@ -14,4 +14,7 @@ def map_foo():
 
 @app.route("/fake")
 def fake():
-    return request.args.get('news', '')
+    if random.random() < 0.5:
+        return 	"😀"
+    else:
+        return "🙃"
