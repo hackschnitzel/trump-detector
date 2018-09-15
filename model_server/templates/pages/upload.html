@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="{{ url_for('static', filename='label.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<body>
+
+<h1>Fake news labeling</h1>
+<form id="newsform" action={{ url_for('api.label') }} method="POST">
+    <label>Title:</label> <input id="Title" name="Title"><br>
+    <label>Text:</label><textarea id="Text" name="Text" rows="20" cols="100" autofocus></textarea></br>
+    <input id="fakeNews" type="checkbox" value=true checked>Fake News<br>
+    <input id="submitbutton" type="button" value="Submit">
+</form>
+
+<p>Click the "Submit" button to upload a new label.</p>
+
+
+</body>
+</html>

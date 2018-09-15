@@ -1,9 +1,12 @@
+import sqlite3
 import sys
 
 import pandas as pd
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Response
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.externals import joblib
+
+from model_server.database import db
 
 
 class Selector(BaseEstimator, TransformerMixin):
@@ -52,3 +55,19 @@ def check():
         )
     )[0][0]
     return jsonify({"score": score})
+
+
+@api.route("/label", methods=["POST"])
+def label():
+    is_fake = 1 if request.form['Fake'] else 0
+    title = request.form['Title']
+    text = request.form['Text']
+
+    statement = "INSERT INTO articles (title, text, fake) VALUES (?, ?, ?)"
+
+    database_conn = db.get_db()
+    cursor = database_conn.cursor()
+    cursor.execute(statement, (title, text, is_fake))
+    database_conn.commit()
+    database_conn.close()
+    return Response(status=204)
