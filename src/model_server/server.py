@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 import random
 app = Flask(__name__)
 
@@ -12,9 +13,9 @@ def hello():
 def map_foo():
     return "🦖"
 
-@app.route("/fake")
-def fake():
-    if random.random() < 0.5:
-        return 	"😀"
+@app.route("/check", methods=["POST"])
+def check():
+    if request.form['news'] == 'covfefe':
+        return '1.0'
     else:
-        return "🙃"
+        return str(random.random())
