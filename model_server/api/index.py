@@ -1,4 +1,3 @@
-import random
 import sys
 
 import pandas as pd
@@ -43,7 +42,7 @@ def map_foo():
 
 @api.route("/check", methods=["POST"])
 def check():
-    return str(model.predict(
+    return str(model.predict_proba(
         pd.DataFrame(
 
             {
