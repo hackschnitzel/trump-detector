@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 <script type="text/javascript" src="{{ url_for('static', filename='classify2.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 <body>
 
+<h1>Fake news detector</h1>
 <form id="newsform" action={{ url_for('api.check')}} method="POST">
 Title: <input id="Title" name="Title"><br>
     Text: <textarea id="Text" name="Text" rows="20" cols="100" autofocus></textarea></br>
-    <input id="submitbutton" type="button" value="ok">
+    <input id="submitbutton" type="button" value="Submit">
 </form>
 
-Score: <p id="isfake"></p>
+<br>
+<br>
+<strong>Score: <p id="isfake"></p></strong>
 
 <p>Click the "Submit" button to classify text.</p>
 

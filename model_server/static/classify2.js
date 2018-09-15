@@ -9,7 +9,14 @@ window.onload=function(){
         req.onreadystatechange = function()
         {
             if(this.readyState === 4 && this.status === 200) {
-                result.innerHTML = this.responseText
+                var score = JSON.parse(this.responseText)['score'];
+                result.innerHTML = score;
+                if(parseFloat(score) > parseFloat(0.5)) {
+                    result.style.color = "#f44242";
+                }
+                else {
+                    result.style.color = "#13b70b";
+                }
             }
         };
         req.open('POST', '/api/check', true);
