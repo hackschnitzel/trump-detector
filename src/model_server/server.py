@@ -1,23 +1,11 @@
 from flask import Flask
-from flask import request
-import random
 from model_server.frontend.index import fe
+from model_server.api.index import api
+
+
 app = Flask(__name__)
-app.register_blueprint(fe, url_prefix='/a')
+app.register_blueprint(fe, url_prefix='/')
+app.register_blueprint(api, url_prefix='/api')
 
 
-@app.route("/")
-def hello():
-    return "Beep Bloop Bleeeeep"
 
-
-@app.route("/🤢")
-def map_foo():
-    return "🦖"
-
-@app.route("/check", methods=["POST"])
-def check():
-    if request.form['news'] == 'covfefe':
-        return '1.0'
-    else:
-        return str(random.random())
