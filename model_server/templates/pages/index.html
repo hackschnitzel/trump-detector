@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<form action={{ url_for('api.check')}}>
+<form action={{ url_for('api.check')}} method="POST">
 Title: <input name="Title"><br>
     Text: <textarea name="Text" rows="20" cols="100" autofocus></textarea></br>
     <input type="submit" value="Submit">
