@@ -59,7 +59,7 @@ def check():
 
 @api.route("/label", methods=["POST"])
 def label():
-    is_fake = 1 if request.form['Fake'] else 0
+    is_fake = 1 if request.form['Fake'] == 'true' else 0
     title = request.form['Title']
     text = request.form['Text']
 
