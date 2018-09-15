@@ -1,7 +1,9 @@
 from flask import Flask
 from flask import request
 import random
+from model_server.frontend.index import fe
 app = Flask(__name__)
+app.register_blueprint(fe, url_prefix='/a')
 
 
 @app.route("/")
