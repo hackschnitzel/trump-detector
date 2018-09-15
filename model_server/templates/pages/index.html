@@ -5,14 +5,12 @@
 <body>
 
 <h1>Fake news detector</h1>
-<form id="newsform" action={{ url_for('api.check')}} method="POST">
-Title: <input id="Title" name="Title"><br>
-    Text: <textarea id="Text" name="Text" rows="20" cols="100" autofocus></textarea></br>
+<form id="newsform" action={{ url_for('api.check') }} method="POST">
+    <label>Title:</label> <input id="Title" name="Title"><br>
+    <label>Text:</label><textarea id="Text" name="Text" rows="20" cols="100" autofocus></textarea></br>
     <input id="submitbutton" type="button" value="Submit">
 </form>
 
-<br>
-<br>
 <strong>Score: <p id="isfake"></p></strong>
 
 <p>Click the "Submit" button to classify text.</p>
