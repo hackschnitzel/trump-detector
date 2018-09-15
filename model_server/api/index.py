@@ -42,7 +42,7 @@ def map_foo():
 
 @api.route("/check", methods=["POST"])
 def check():
-    return jsonify({"score": model.predict_proba(
+    score = str(model.predict_proba(
         pd.DataFrame(
 
             {
@@ -50,4 +50,5 @@ def check():
                 'text': [request.form['Text']]
             }
         )
-    )[0]})
+    )[0])
+    return jsonify({"score": score})
