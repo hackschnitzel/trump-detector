@@ -1,7 +1,7 @@
 import sys
 
 import pandas as pd
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.externals import joblib
 
@@ -42,7 +42,7 @@ def map_foo():
 
 @api.route("/check", methods=["POST"])
 def check():
-    return {"score": str(model.predict_proba(
+    return jsonify({"score": model.predict_proba(
         pd.DataFrame(
 
             {
@@ -50,4 +50,4 @@ def check():
                 'text': [request.form['Text']]
             }
         )
-    )[0])}
+    )[0]})
