@@ -1,0 +1,1 @@
+dataset source: https://github.com/GeorgeMcIntire/fake_real_news_dataset
